@@ -1,3 +1,4 @@
+import 'package:chat_ui/provider/chat_provider.dart';
 import 'package:chat_ui/provider/home_provider.dart';
 
 import 'provider/settings_provider.dart';
@@ -54,6 +55,13 @@ class MyApp extends StatelessWidget {
         ),
         Provider<HomeProvider>(
           create: (_) => HomeProvider(firebaseFirestore: firebaseFirestore),
+        ),
+        Provider<ChatProvider>(
+          create: (_) => ChatProvider(
+            firebaseFirestore: this.firebaseFirestore,
+            prefs: this.prefs,
+            firebaseStorage: this.firebaseStorage,
+          ),
         ),
       ],
       child: MaterialApp(
